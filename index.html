@@ -3,187 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
     <title>Flavv - The Artist</title>
     
-    <!-- Stiluri -->
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/music-robot.png">
-    
-    <!-- Scripturi -->
-    <script src="/script.js" defer></script>
+    <!-- CSS INLINE - garantat merge -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000000; 
+            color: #FFFFFF; 
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .logo { 
+            color: #00f5d4; 
+            font-size: 32px; 
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        h1 { color: #00f5d4; margin: 20px 0; }
+        a { color: #00f5d4; text-decoration: none; }
+        .section { margin: 40px 0; padding: 20px; background: #111; border-radius: 10px; }
+    </style>
 </head>
 <body>
-    <!-- Background Animation -->
-    <div id="background-animation"></div>
+    <div class="logo">FLAVV</div>
     
-    <!-- Navigation -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">FLAVV</div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Acasă</a></li>
-                <li><a href="#social" class="nav-link">Social</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="section active">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="main-title"><span class="turquoise-text">FLAVV</span> THE ARTIST</h1>
-                    <p class="subtitle">RAP • TRAP • VIBES</p>
-                    <p class="description">
-                        Un voce autentică din Pitești, combinând versuri profunde cu beat-uri captivante. 
-                        De la underground la mainstream, fiecare piesă e o călătorie emoțională. 
-                        Sunetul care rezonează cu generația.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="#social" class="btn primary-btn">Ascultă acum</a>
-                        <a href="#contact" class="btn secondary-btn">Colaborează</a>
-                    </div>
-                </div>
-                
-                <!-- Image Gallery -->
-                <div class="gallery-section">
-                    <h2 class="section-title">GALERIE</h2>
-                    <p class="section-subtitle">Momente din studio și pe scenă</p>
-                    <div class="gallery-grid">
-                        <div class="gallery-item placeholder">
-                            <div class="image-placeholder">
-                                <i class="fas fa-music"></i>
-                                <p>Poza ta 1</p>
-                            </div>
-                        </div>
-                        <div class="gallery-item placeholder">
-                            <div class="image-placeholder">
-                                <i class="fas fa-headphones"></i>
-                                <p>Poza ta 2</p>
-                            </div>
-                        </div>
-                        <div class="gallery-item placeholder">
-                            <div class="image-placeholder">
-                                <i class="fas fa-microphone"></i>
-                                <p>Poza ta 3</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="upload-hint">
-                        <i class="fas fa-info-circle"></i> 
-                        Încarcă poze în folderul <code>images/</code> și modifică acest cod.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Social Section -->
-        <section id="social" class="section">
-            <div class="container">
-                <h2 class="section-title">CONECTEAZĂ-TE CU MINE</h2>
-                <p class="section-subtitle">Urmărește-mă pe rețelele sociale pentru conținut exclusiv</p>
-                
-                <div class="social-grid">
-                    <a href="https://www.instagram.com/isflavv/" target="_blank" class="social-card instagram">
-                        <div class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <h3>Instagram</h3>
-                        <p>@isflavv</p>
-                        <span class="follow-btn">Urmărește</span>
-                    </a>
-                    
-                    <a href="https://www.tiktok.com/@flavv_tt" target="_blank" class="social-card tiktok">
-                        <div class="social-icon">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                        <h3>TikTok</h3>
-                        <p>@flavv_tt</p>
-                        <span class="follow-btn">Urmărește</span>
-                    </a>
-                    
-                    <a href="https://www.youtube.com/@isflavv" target="_blank" class="social-card youtube">
-                        <div class="social-icon">
-                            <i class="fab fa-youtube"></i>
-                        </div>
-                        <h3>YouTube</h3>
-                        <p>@isflavv</p>
-                        <span class="follow-btn">Abonează-te</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title">CONTACT ȘI BOOKING</h2>
-                <p class="section-subtitle">Pentru colaborări, concerte și mesaje</p>
-                
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3>Locație</h3>
-                        <p>Pitești, Județul Argeș</p>
-                        <p class="highlight">România</p>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <h3>Contact Direct</h3>
-                        <p>Toate colaborările și booking-urile se fac prin Instagram</p>
-                        <a href="https://www.instagram.com/isflavv/" target="_blank" class="btn contact-btn">
-                            <i class="fab fa-instagram"></i> Scrie-mi pe Instagram
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="booking-note">
-                    <p><i class="fas fa-info-circle"></i> Pentru seriozitate, te rugăm să folosești mesajul direct pe Instagram.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">FLAVV</div>
-                <p class="footer-tagline">Artist | Producer | Creator</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/isflavv/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@flavv_tt" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.youtube.com/@isflavv" target="_blank"><i class="fab fa-youtube"></i></a>
-                </div>
-                <p class="copyright">&copy; 2024 Flavv. Toate drepturile rezervate.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Load Google Fonts Async -->
+    <nav>
+        <a href="#home">Acasă</a> | 
+        <a href="#social">Social</a> | 
+        <a href="#contact">Contact</a>
+    </nav>
+    
+    <section id="home" class="section">
+        <h1>FLAVV THE ARTIST</h1>
+        <p>RAP • TRAP • VIBES</p>
+        <p>Artist din Pitești. Sunet autentic, versuri profunde.</p>
+    </section>
+    
+    <section id="social" class="section">
+        <h2>Social Media</h2>
+        <p>Instagram: <a href="https://instagram.com/isflavv" target="_blank">@isflavv</a></p>
+        <p>TikTok: <a href="https://tiktok.com/@flavv_tt" target="_blank">@flavv_tt</a></p>
+        <p>YouTube: <a href="https://youtube.com/@isflavv" target="_blank">@isflavv</a></p>
+    </section>
+    
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>📍 Pitești, Argeș, România</p>
+        <p>📩 Mesaje pe Instagram pentru colaborări</p>
+    </section>
+    
+    <!-- JavaScript inline -->
     <script>
-        // Load fonts without blocking
-        const fontLink = document.createElement('link');
-        fontLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap';
-        fontLink.rel = 'stylesheet';
-        document.head.appendChild(fontLink);
+        console.log('Flavv site loaded');
+        alert('Site-ul funcționează! Acum putem adăuga design-ul complet.');
     </script>
 </body>
 </html>
