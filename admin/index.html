@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavv Admin Panel</title>
+    
+    <!-- Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #00f5d4;
+        }
+        
+        .admin-title {
+            color: #00f5d4;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .admin-subtitle {
+            color: #9bf6ff;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .dashboard-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(0, 245, 212, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            border-color: #00f5d4;
+        }
+        
+        .card-title {
+            color: #00f5d4;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .card-title i {
+            font-size: 1.5rem;
+        }
+        
+        .instructions {
+            line-height: 1.6;
+            color: #ccc;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .instructions li {
+            margin-bottom: 12px;
+            padding-left: 5px;
+        }
+        
+        .code-block {
+            background: #000;
+            color: #00f5d4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00f5d4, #00b8a9);
+            color: black;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: inherit;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 245, 212, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #00f5d4;
+            border: 2px solid #00f5d4;
+        }
+        
+        .links {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .warning {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            color: #ffc107;
+        }
+        
+        .warning strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .decap-section {
+            margin-top: 50px;
+            background: rgba(0, 245, 212, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #00f5d4;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 20px;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title"><i class="fas fa-crown"></i> FLAVV ADMIN PANEL</h1>
+            <p class="admin-subtitle">Panoul de administrare pentru site-ul oficial</p>
+        </div>
+        
+        <!-- Quick Instructions -->
+        <div class="dashboard">
+            <div class="dashboard-card">
+                <h2 class="card-title"><i class="fas fa-upload"></i> Încarcă Poze</h2>
+                <div class="instructions">
+                    <p>Pentru a adăuga poze în galerie:</p>
+                    <ol>
+                        <li>Intri pe repository pe GitHub</li>
+                        <li>Accesezi folderul <strong>uploads/</strong></li>
+                        <li>Butonul <strong>"Add file" → "Upload files"</strong></li>
+                        <li>Tragi pozele și faci Commit</li>
+                    </ol>
+                </div>
+                <a href="https://github.com/stefimihai27/isFlavv/tree/main/uploads" target="_blank" class="btn">
+                    <i class="fab fa-github"></i> Mergi la Uploads
+                </a>
+            </div>
+            
+            <div class="dashboard-card">
+                <h2 class="card-title"><i class="fas fa-edit"></i> Modifică Text</h2>
+                <div class="instructions">
+                    <p>Pentru a schimba textul site-ului:</p>
+                    <ol>
+                        <li>Deschizi fișierul <strong>index.html</strong></li>
+                        <li>Butonul <strong>✏️ Edit</strong> (dreapta sus)</li>
+                        <li>Schimbi ce text vrei</li>
+                        <li>Commit changes</li>
+                    </ol>
+                </div>
+                <a href="https://github.com/stefimihai27/isFlavv/blob/main/index.html" target="_blank" class="btn">
+                    <i class="fas fa-code"></i> Editează index.html
+                </a>
+            </div>
+            
+            <div class="dashboard-card">
+                <h2 class="card-title"><i class="fas fa-palette"></i> Schimbă Culori</h2>
+                <div class="instructions">
+                    <p>Pentru a modifica culorile:</p>
+                    <ol>
+                        <li>Deschizi <strong>style.css</strong></li>
+                        <li>Cauți secțiunea <code>:root</code></li>
+                        <li>Schimbi valorile culorilor</li>
+                        <li>Salvezi și commit</li>
+                    </ol>
+                    <div class="code-block">
+:root {
+    --turquoise: #00f5d4;    ← Schimbi aici
+    --turquoise-dark: #00b8a9;
+}
+                    </div>
+                </div>
+                <a href="https://github.com/stefimihai27/isFlavv/blob/main/style.css" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-paint-brush"></i> Modifică CSS
+                </a>
+            </div>
+        </div>
+        
+        <!-- Warning -->
+        <div class="warning">
+            <strong><i class="fas fa-exclamation-triangle"></i> IMPORTANT:</strong>
+            <p>După fiecare modificare pe GitHub, site-ul se actualizează automat în 30-60 de secunde pe Vercel.</p>
+        </div>
+        
+        <!-- Decap CMS Section -->
+        <div class="decap-section">
+            <h2 class="card-title"><i class="fas fa-wrench"></i> Decap CMS (Avansat)</h2>
+            <p class="instructions">Pentru un panou de admin mai avansat, completează configurația de mai jos și apoi accesează <strong>isflavv.vercel.app/admin</strong></p>
+            
+            <div class="code-block">
+&lt;script&gt;
+CMS.init({
+    config: {
+        backend: {
+            name: "github",
+            repo: "stefimihai27/isFlavv",  // Schimbă cu username-ul tău
+            branch: "main",
+        },
+        media_folder: "uploads",
+        public_folder: "/uploads",
+        collections: [
+            {
+                name: "gallery",
+                label: "Galerie Foto",
+                folder: "uploads/gallery",
+                create: true,
+                fields: [
+                    { label: "Titlu", name: "title", widget: "string" },
+                    { label: "Poza", name: "image", widget: "image" },
+                    { label: "Descriere", name: "description", widget: "text" }
+                ]
+            }
+        ]
+    }
+});
+&lt;/script&gt;
+            </div>
+            
+            <p class="instructions">Pentru a activa Decap CMS, dezarcolează secțiunea de script de mai sus și copiaz-o la sfârșitul acestui fișier, înainte de <code>&lt;/body&gt;</code>.</p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="links">
+            <a href="https://vercel.com/stefimihai27/isFlavv" target="_blank" class="btn">
+                <i class="fas fa-rocket"></i> Vercel Dashboard
+            </a>
+            <a href="https://isflavv.vercel.app" target="_blank" class="btn">
+                <i class="fas fa-external-link-alt"></i> Vezi Site-ul Live
+            </a>
+            <a href="../index.html" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Înapoi la Site
+            </a>
+        </div>
+    </div>
+
+    <!-- Decap CMS Script (UNCOMMENT TO ENABLE) -->
+    <!--
+    <script>
+    CMS.init({
+        config: {
+            backend: {
+                name: "github",
+                repo: "stefimihai27/isFlavv", // SCHIMBĂ CU USERNAME-UL TĂU!
+                branch: "main",
+            },
+            media_folder: "uploads",
+            public_folder: "/uploads",
+            collections: [
+                {
+                    name: "gallery",
+                    label: "Galerie Foto",
+                    folder: "uploads/gallery",
+                    create: true,
+                    fields: [
+                        { label: "Titlu", name: "title", widget: "string" },
+                        { label: "Poza", name: "image", widget: "image" },
+                        { label: "Descriere", name: "description", widget: "text" }
+                    ]
+                }
+            ]
+        }
+    });
+    </script>
+    -->
+</body>
+</html>
