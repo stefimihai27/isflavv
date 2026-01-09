@@ -1,172 +1,62 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flavv Admin Panel</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flavv Admin</title>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-            color: white;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .admin-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 245, 212, 0.2);
-        }
-        
-        .admin-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .admin-title {
-            color: #00f5d4;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .admin-subtitle {
-            color: #9bf6ff;
-            opacity: 0.8;
-        }
-        
-        .admin-section {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-left: 4px solid #00f5d4;
-        }
-        
-        .section-title {
-            color: #00f5d4;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .instructions {
-            line-height: 1.6;
-            color: #ccc;
-        }
-        
-        .instructions ol {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        
-        .instructions li {
-            margin-bottom: 10px;
-        }
-        
-        .code-block {
-            background: #000;
-            color: #00f5d4;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: monospace;
-            margin: 15px 0;
-            overflow-x: auto;
-            border: 1px solid #333;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #00f5d4, #00b8a9);
-            color: black;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 245, 212, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #00f5d4;
-            border: 2px solid #00f5d4;
-        }
-        
-        .links {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .warning {
-            background: rgba(255, 193, 7, 0.1);
-            border: 1px solid #ffc107;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 20px 0;
-            color: #ffc107;
-        }
-        
-        @media (max-width: 768px) {
-            .admin-container {
-                padding: 20px;
-            }
-            
-            .links {
-                flex-direction: column;
-            }
-        }
+        body { font-family: Arial; margin: 40px; background: #0a0a0a; color: white; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: #00f5d4; }
     </style>
 </head>
 <body>
-    <div class="admin-container">
-        <div class="admin-header">
-            <h1 class="admin-title">🎵 FLAVV ADMIN PANEL</h1>
-            <p class="admin-subtitle">Panoul de administrare pentru site-ul oficial</p>
-        </div>
-        
-        <div class="admin-section">
-            <h2 class="section-title">📝 Cum să modifici conținutul</h2>
-            <div class="instructions">
-                <p>Pentru a modifica site-ul, urmează acești pași:</p>
-                <ol>
-                    <li>Accesează repository-ul pe GitHub: <strong>github.com/username/isFlavv</strong></li>
-                    <li>Apasă pe fișierul pe care vrei să-l modifici (ex: index.html)</li>
-                    <li>Apasă butonul <strong>✏️ Edit</strong> (dreapta sus)</li>
-                    <li>Fă modificările dorite în editor</li>
-                    <li>La sfârșit, completează:
-                        <div class="code-block">
-                            Commit changes<br>
-                            [x] Commit directly to the main branch<br>
-                            Apasă butonul verde "Commit changes"
-                        </div>
-                    </li>
-                    <li>Site-ul se va actualiza automat în 30 de secunde pe Vercel</li>
-                </ol>
-            </div>
-        </div>
-        
-        <div class="admin-section">
-            <h2 class="
+    <div class="container">
+        <h1>🎵 FLAVV Admin Panel</h1>
+        <p>Incarci poze și modifici conținut direct aici!</p>
+    </div>
+    
+    <script>
+    CMS.init({
+        config: {
+            backend: {
+                name: "github",
+                repo: "username/isFlavv", <!-- SCHIMBĂ CU USERNAME-UL TĂU -->
+                branch: "main",
+            },
+            media_folder: "uploads", <!-- Unde se salvează pozele -->
+            public_folder: "/uploads",
+            collections: [
+                {
+                    name: "gallery",
+                    label: "Galerie Foto",
+                    folder: "images/gallery",
+                    create: true,
+                    fields: [
+                        { label: "Titlu", name: "title", widget: "string" },
+                        { label: "Poza", name: "image", widget: "image" },
+                        { label: "Descriere", name: "description", widget: "text" }
+                    ]
+                },
+                {
+                    name: "content",
+                    label: "Conținut Site",
+                    files: [
+                        {
+                            label: "Pagina Principală",
+                            name: "home",
+                            file: "index.html",
+                            fields: [
+                                { label: "Titlu", name: "title", widget: "string" },
+                                { label: "Descriere", name: "description", widget: "text" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+    </script>
+</body>
+</html>
